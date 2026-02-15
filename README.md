@@ -1,20 +1,20 @@
-# 🎲 Embedded Dice Simulator (ARM7 – LPC2129)
+# 🎲 Embedded Dice Simulator 
 
-## 📌 Overview
+## 📌 Abstract
 This project implements a dice roll simulator using an ARM7 (LPC2129) microcontroller.  
 A hardware timer is used to generate a pseudo-random number between 1 and 6 when a push button is pressed, and the result is displayed on a 16×2 LCD.
 
 The project focuses on core embedded system concepts such as timers, interrupts, GPIO handling, and LCD interfacing.
 
 ## ⚙️ Hardware Components
-- LPC2129 ARM7TDMI Development Board (12 MHz crystal)
-- 16×2 Alphanumeric LCD
+- LPC2129 ARM7TDMI Development Board 
+- 16×2 Alphanumeric LCD 
 - Push button switch
 
 ## 🛠 Software Tools
-- Embedded C (bare-metal firmware development)
-- Keil µVision IDE (development, build, and debugging)
-- Flash Magic (firmware flashing via UART bootloader)
+- Embedded C 
+- Keil µVision IDE 
+- Flash Magic 
 
 ## 🧠 Working Principle
 1. A hardware timer runs continuously on the LPC2129.
@@ -30,7 +30,3 @@ The project focuses on core embedded system concepts such as timers, interrupts,
 - 16×2 LCD driver development
 - Bare-metal Embedded C programming
 - Firmware debugging and validation using Keil µVision
-
-## 👨‍💻 Author
-Naga Viswanth Bonthu  
-Embedded Systems | ARM7 | Timers | Interrupts | LCD Interfacing
