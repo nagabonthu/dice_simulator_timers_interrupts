@@ -1,10 +1,11 @@
 /**********************************************
 * Project: Dice Random number Generator
-* MCU: lpc21xx
-*Feature: Timer_based random number + switch debounce
+* MCU: lpc2129 Processor ARM7TDMI
 ***********************************************/
 #include <lpc21xx.h>
 #include "lcdheader.h"
+
+#define SW 16
 
 /*Global variable*/
 unsigned char num=1;
@@ -15,10 +16,10 @@ void dice_randomnumber(void) __irq
 {
 	EXTINT=0x01;  	       //clear EINT0 flag
 	num=(T1PC%6)+1;        //Generate random number(1-6)
-	VICIntEnClr=(1<<14);   //Diable EINT0(debouncing)
+	VICIntEnClr=(1<<14);   //Disable EINT0 flag(debouncing)
 	delay_millisec(50);
 	VICIntEnable|=(1<<14); //Enable EINT0 again
-  VICVectAddr=0;        //End of Isr
+    VICVectAddr=0;        //End of Isr
 }
 int main()
 {
@@ -43,20 +44,19 @@ int main()
 	lcd_cmd(0x80);
 	lcd_string("Rolling dice");
 	
-	
 	while(1)
 	{
 	lcd_cmd(0xc0);
 	lcd_string("Dice:");
 	lcd_data(num+48);	
 		
-		if(((IOPIN0>>14)&1)==0)
+		if(((IOPIN0>>SW)&1)==0)
 		{
 			count++;
 			lcd_cmd(0x8E);
 			lcd_data((count/10)+48);
 			lcd_data((count%10)+48);
-			while(((IOPIN0>>14)&1)==0);  //wait for release 
+			while(((IOPIN0>>SW)&1)==0);  //wait for release 
 			delay_millisec(50);         //Extra bounce
 		}		
 	}
