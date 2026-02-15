@@ -3,13 +3,14 @@
 * MCU: lpc2129 Processor ARM7TDMI
 ***********************************************/
 #include <lpc21xx.h>
-#include "lcdheader.h"
-
-#define SW 16
+#include "lcdh.h"
+#include "lcd.c"
 
 /*Global variable*/
 unsigned char num=1;
 unsigned char count=0;
+
+#define SW 16 //P0.16 connected to a switch
 
 /* ISR for External Interrupt 0*/
 void dice_randomnumber(void) __irq
@@ -48,7 +49,7 @@ int main()
 	{
 	lcd_cmd(0xc0);
 	lcd_string("Dice:");
-	lcd_data(num+48);	
+	lcd_data(num+48);// converting the number to ASCII value	
 		
 		if(((IOPIN0>>SW)&1)==0)
 		{
