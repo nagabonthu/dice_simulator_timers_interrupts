@@ -6,8 +6,8 @@ A hardware timer is used to generate a pseudo-random number between 1 and 6 when
 
 The project focuses on core embedded system concepts such as timers, interrupts, GPIO handling, and LCD interfacing.
 
-##  Hardware Components
-- LPC2129 ARM7TDMI Development Board 
+##  Hardware
+- LPC2129 ARM7TDMI Development Board (12 MZ Crystal oscillator in-built)
 - 16×2 Alphanumeric LCD 
 - Push button switch
 
